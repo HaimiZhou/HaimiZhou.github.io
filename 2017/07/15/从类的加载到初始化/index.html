@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://HaimiZhou.com/2017/07/15/从类的加载到初始化/index.html">
 <meta property="og:site_name" content="Zhou">
 <meta property="og:description" content="第一次写博客，有点小激动，不知道发布上去会是什么样子呢~今天我来讲一下一个类从加载到初始化是怎样的一个过程呢，让我慢慢道来。。 首先我们编写的这样一个.java文件会通过JDK环境相关指令被编译成一个.class文件然后.class文件会被JVM加载进内存，至于他是怎么被加载进来的呢，被谁加载进来的呢，这里就有个双亲委派模型机制，首先寻找jre里面jvm.dll这个文件去初始化JVM,然后产生一个">
-<meta property="og:updated_time" content="2017-07-15T03:00:22.014Z">
+<meta property="og:updated_time" content="2017-07-15T03:16:33.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从类的加载到初始化">
 <meta name="twitter:description" content="第一次写博客，有点小激动，不知道发布上去会是什么样子呢~今天我来讲一下一个类从加载到初始化是怎样的一个过程呢，让我慢慢道来。。 首先我们编写的这样一个.java文件会通过JDK环境相关指令被编译成一个.class文件然后.class文件会被JVM加载进内存，至于他是怎么被加载进来的呢，被谁加载进来的呢，这里就有个双亲委派模型机制，首先寻找jre里面jvm.dll这个文件去初始化JVM,然后产生一个">
@@ -330,11 +330,14 @@
 
       
         <p>第一次写博客，有点小激动，不知道发布上去会是什么样子呢~<br>今天我来讲一下一个类从加载到初始化是怎样的一个过程呢，让我慢慢道来。。</p>
-<p>首先我们编写的这样一个.java文件会通过JDK环境相关指令被编译成一个.class文件<br>然后.class文件会被JVM加载进内存，至于他是怎么被加载进来的呢，被谁加载进来的呢，这里就有个双亲委派模型机制，首先寻找jre里面jvm.dll这个文件去初始化JVM,然后产生一个BootstrapLoader启动类加载器，这个加载器又会去加载Extended Loader标准扩展类加载器，如果父类加载器在搜索范围内没有找到该类，则最后由AppClassLoader去加载这个类，避免了一个类被加载多次</p>
-<p>加载后就开始进行链接，链接分为验证，准备，解析。<br>验证是为了确保class文件的字节流符合JVM的口味，验证分为文件格式验证，元数据验证，字节码验证，符号引用验证；<br>准备阶段只会给那些静态变量设置一个初始值<br>解析是对类的字段，方法等东西进行转换</p>
-<p>开始判断是否满足初始化条件，有这么5种情况<br>1.遇到new getstatic putstatic invokestatic这四条字节码指令时<br>2.使用java.lang.reflect.*的方法对类进行反射调用<br>3.初始化子类，而他的父类没有初始化时，需要先初始化父类<br>4.JVM启动时要求的主类<br>5.用Class.forName(String className) 加载类</p>
+<p>首先我们编写的这样一个.java文件会通过JDK环境相关指令被编译成一个.class文件<br>然后.class文件会被JVM加载进内存，至于他是怎么被加载进来的呢，被谁加载进来的呢，这里就有个双亲委派模型机制，首先寻找jre里面jvm.dll这个文件去初始化JVM,然后产生一个BootstrapLoader启动类加载器，这个加载器又会去加载Extended Loader标准扩展类加载器，如果父类加载器在搜索范围内没有找到该类，则最后由AppClassLoader去加载这个类，这样就避免了一个类被加载多次</p>
+<p>加载后就开始进行链接，链接分为验证，准备，解析。<br>验证是为了确保class文件的字节流符合JVM的口味，验证分为文件格式验证，元数据验证，字节码验证，符号引用验证；<br>准备阶段只会给那些静态变量设置一个初始值 public static int i=123;此时i=0;还没有执行程序代码，只是初始化<br>解析是对类的字段，方法等东西进行转换</p>
+<p>开始判断是否满足初始化条件，有这么5种情况（主动引用）<br>1.遇到new getstatic putstatic invokestatic这四条字节码指令时<br>2.使用java.lang.reflect.*的方法对类进行反射调用<br>3.初始化子类，而他的父类没有初始化时，需要先初始化父类<br>4.JVM启动时要求的主类<br>5.用Class.forName(String className) 加载类</p>
+<p>下面再补充3种被动引用的类的情况，类不会初始化<br>1.子类调用父类的静态变量<br>2.通过数组引用类的情况list=Main[10];<br>3.调用类中的final静态常量</p>
 <p>满足了之后判断该类是不是已经进行了初始化，如果初始化了后直接可以使用，否则<br>初始化，其实就是执行<clinit>()方法，也叫类构造器方法，就是编译器会自动收集类中所有的类变量的<br>赋值动作和静态代码块中的语句并按照源文件中的顺序合并在这个方法里</clinit></p>
 <p>初始化顺序<br>父类静态变量和静态代码块<br>子类静态变量和静态代码块<br>父类变量和代码块<br>父类构造函数<br>子类变量和代码块<br>子类构造函数</p>
+<p>接下来就是使用了，，</p>
+<p>类的卸载请看下一章&gt;&gt;JVM虚拟机</p>
 
       
     </div>
@@ -367,22 +370,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/15/hello/" rel="prev" title="hello">
-                hello <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
 
       
@@ -443,7 +430,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
