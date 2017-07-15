@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://HaimiZhou.com/2017/07/15/JVM内存结构/index.html">
 <meta property="og:site_name" content="Zhou">
 <meta property="og:description" content="作为一个小仙女走上了程序员这条道道，，，给你一个眼神，你懂的，今天来说一下JVM的内存结构，为什么要讲这个，大家都知道，现在流行的框架越来越多，封装的也越来越完善，以至于我们基本不用关注底层的具体实现就可以快速上手，但是当程序出现问题时我们可能会难以解决，造成一定的局限性，所以我们只有知道这些基础知识底层原理，才能在出现问题时快速定位到问题的本质。Yes JVM内存结构Java堆Heap: jav">
-<meta property="og:updated_time" content="2017-07-15T06:32:57.705Z">
+<meta property="og:updated_time" content="2017-07-15T08:05:06.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM内存结构">
 <meta name="twitter:description" content="作为一个小仙女走上了程序员这条道道，，，给你一个眼神，你懂的，今天来说一下JVM的内存结构，为什么要讲这个，大家都知道，现在流行的框架越来越多，封装的也越来越完善，以至于我们基本不用关注底层的具体实现就可以快速上手，但是当程序出现问题时我们可能会难以解决，造成一定的局限性，所以我们只有知道这些基础知识底层原理，才能在出现问题时快速定位到问题的本质。Yes JVM内存结构Java堆Heap: jav">
@@ -335,6 +335,7 @@
 <p>程序计数器：是一块较小的内存空间，是当前线程所执行字节码的行号指示器</p>
 <p>JVM栈：他和程序计数器一样也是线程私有的，生命周期和线程一样。他描述Java方法执行的内存模型：每个Java方法执行的时候就会创建一个栈帧用于存储局部变量表，操作栈，动态链接，方法出口等，一个方法从调用到执行完成的过程就对应一个栈帧在jvm栈中入栈到出栈的过程</p>
 <p>本地方法栈：同上，只不过本地方法栈是为jvm使用到的native方法服务</p>
+<p>对象分配规则<br>1.对象优先分配在Eden区，如果Eden空间不够则Minor GC<br>2.大对象直接进入老年代（需要大量连续内存空间的对象）避免在Eden区和Survivor区之间发生大量的内存拷贝（因为新生代采用复制算法收集内存）<br>3.长期存活的对象进入老年代。虚拟机为每一个对象定义了一个年龄计数器，第一次Minor GC 对象进入Survivor中，之后每Minor GC一次对象年龄加1，达到阈值对象进入老年区<br>4.动态判断对象的年龄：如果Survivor区中相同年龄的所有对象的大小总和大于Survivor空间的一半，则年龄大于或等于该年龄的对象进入老年代<br>5.空间分配担保：每次进行Minor GC时，JVM会计算Survivor区到老年代的对象的平均大小，如果这个值大于老年区的剩余值的大小，则进行Full GC ,如果小于检查HandlePromotionFailure设置，如果true则Minor GC，false Full GC</p>
 
       
     </div>
