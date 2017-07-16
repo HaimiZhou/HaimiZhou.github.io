@@ -266,6 +266,125 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/16/GC算法-垃圾回收/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaimiZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑米粥">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/16/GC算法-垃圾回收/" itemprop="url">GC算法 垃圾回收</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-16T09:08:19+08:00">
+                2017-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对象存活判断<br>1.引用计数法：每个对象都有一个引用计数属性，当被引用时计数加1，被释放时减1，当计数器值为0时可被回收，但这种方式无法解决两个对象相互引用的情况<br>2.可达性分析<br>    从GCRoots往下搜索，搜索所走过的路径称为引用链，凡是没有和引用链相连的对象都是不可用的，不可达对象</p>
+<p>GC算法<br>标记清除算法：将那些要回收的对象标记，然后统一回收</p>
+<p>复制算法：将一块内存空间分成大小相等的两块，每次只使用一块，当这一块内存使用完了之后，将还存活的对象全部复制到另一块内存上，然后将用完了的那块内存一次清理掉</p>
+<p>标记压缩算法： 将还存活的对象进行一端移动，然后直接清理掉端边界之外的内存</p>
+<p>分代收集算法： 把Java堆分为新生代和老年代，根据各个年代的特点采用最合适的收集算法，新生代采用复制算法，老年代多采用标记压缩算法</p>
+<p>GC类型<br>Minor GC<br>    当生成一个对象并从Eden区申请空间失败，从年轻代回收内存空间<br>Major GC<br>    清理永久代<br>Full GC<br>    当老年代满或者永久代写满或者System.gc()清理整个堆空间</p>
+<p>垃圾回收器</p>
+<p>Serial收集器：串行收集器是最古老，最稳定效率高的收集器，可能会产生较长的停顿，每次只使用一个线程去回收<br>ParNew收集器： Serial收集器的多线程版本<br>Parallel收集器： 更关注系统的吞吐量<br>Parallel Old收集器：是Parallel的老年代版本<br>CMS收集器：是一种以获取最短回收停顿时间为目标的收集器<br>G1收集器：是一款面向服务器的垃圾回收器，主要针对多颗处理器及内存容量大的机器，在保证停顿时间要求的同时还具备高吞吐量性能特征</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/15/JVM内存结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -541,7 +660,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
