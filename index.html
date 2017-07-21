@@ -333,20 +333,14 @@
 
       
         
-          
-            <p>哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。<br>创建线程的方式就不用多说了相信大家都知道。</p>
-<p>线程状态<br>    新建状态<br>    就绪状态<br>    运行状态<br>    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态<br>    死亡状态</p>
-<p>什么是CAS：compare and change<br>    有一个内存值V，一个期望值A，一个新值B，如果从内存中取出V值和A值相等，那么就把V值改为B值<br>    举个例子，比如有一个变量i初始值是0，现在有两个线程同时想对i进行i++操作，假设A进程先获得CPU使用权，先对i进行i++操作，V(i)=0;A=0;所以V(i)=1;这时候B线程V(i)=0;A=1,所以B线程操作失败</p>
-<p>原子变量：<br>    底层实现是CAS，CPU内部已经执行原子的CAS操作，可以使用原子类来是使用CPU中的这些功能</p>
-<p>Volatile和Java内存模型：<br>    Volatile只保证可见性不能保证原子性，，由于java内存模型是由堆和线程栈组成的，在处理数据时，线程会把值从堆中load到本地，处理完后再save回去，针对volatile修饰的变量的操作就是每次处理都激发一次load/save</p>
-<p>Synchronized：<br>    修饰代码块<br>        synchronized(this|object)<br>        synchronized(类.class)<br>    修饰方法<br>        修饰非静态方法<br>        修饰静态方法</p>
-<pre><code>synchronized关键字不能继承。
-在定义接口方法时不能使用synchronized关键字。
-构造方法不能使用synchronized关键字，但可以使用synchronized代码块来进行同步。
-</code></pre><p>Lock<br>    注意虚假唤醒：线程没有收到notify()就醒过来了<br>    可重入锁：如果一个线程进入同步控制块或同步方法里并获取了该同步块的对象的锁，那么这个线程可进入任何由该对象所同步其他代码块<br>    自旋锁：while循环</p>
-<p>生产者与消费者问题</p>
-
-          
+          <p>哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。<br>创建线程的方式就不用多说了相信大家都知道。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/19/多线程总结/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -571,7 +565,7 @@
           <p>对象存活判断<br>1.引用计数法：每个对象都有一个引用计数属性，当被引用时计数加1，被释放时减1，当计数器值为0时可被回收，但这种方式无法解决两个对象相互引用的情况<br>2.可达性分析<br>    从GCRoots往下搜索，搜索所走过的路径称为引用链，凡是没有和引用链相连的对象都是不可用的，不可达对象<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/07/16/GC算法-垃圾回收/#далее" rel="contents">
+            <a class="btn" href="/2017/07/16/GC算法-垃圾回收/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -687,7 +681,7 @@
           <p>今天来说一下JVM的内存结构，为什么要讲这个，大家都知道，现在流行的框架越来越多，封装的也越来越完善，以至于我们基本不用关注底层的具体实现就可以快速上手，但是当程序出现问题时我们可能会难以解决，造成一定的局限性，所以我们只有知道这些基础知识底层原理，才能在出现问题时快速定位到问题的本质。Yes<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/07/15/JVM内存结构/#далее" rel="contents">
+            <a class="btn" href="/2017/07/15/JVM内存结构/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -804,7 +798,7 @@
 <p>首先我们编写的这样一个.java文件会通过JDK环境相关指令被编译成一个.class文件<br>然后.class文件会被JVM加载进内存，至于他是怎么被加载进来的呢，被谁加载进来的呢，这里就有个双亲委派模型机制，首先寻找jre里面jvm.dll这个文件去初始化JVM,然后产生一个BootstrapLoader启动类加载器，这个加载器又会去加载Extended Loader标准扩展类加载器，如果父类加载器在搜索范围内没有找到该类，则最后由AppClassLoader去加载这个类，这样就避免了一个类被加载多次<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/07/14/类的加载机制/#далее" rel="contents">
+            <a class="btn" href="/2017/07/14/类的加载机制/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>

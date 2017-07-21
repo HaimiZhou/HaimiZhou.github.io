@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。 线程状态    新建状态    就绪状态    运行状态    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态    死亡状态 什么是CAS：compare and change    有一个内存值V，一个期望值A，一个新值">
+<meta name="description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程总结">
 <meta property="og:url" content="http://HaimiZhou.com/2017/07/19/多线程总结/index.html">
 <meta property="og:site_name" content="黑米粥">
-<meta property="og:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。 线程状态    新建状态    就绪状态    运行状态    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态    死亡状态 什么是CAS：compare and change    有一个内存值V，一个期望值A，一个新值">
-<meta property="og:updated_time" content="2017-07-21T06:27:12.049Z">
+<meta property="og:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。">
+<meta property="og:updated_time" content="2017-07-21T06:33:03.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程总结">
-<meta name="twitter:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。 线程状态    新建状态    就绪状态    运行状态    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态    死亡状态 什么是CAS：compare and change    有一个内存值V，一个期望值A，一个新值">
+<meta name="twitter:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。">
 
 
 
@@ -329,8 +329,7 @@
       
 
       
-        <p>哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。<br>创建线程的方式就不用多说了相信大家都知道。</p>
-<p>线程状态<br>    新建状态<br>    就绪状态<br>    运行状态<br>    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态<br>    死亡状态</p>
+        <p>哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。<br>创建线程的方式就不用多说了相信大家都知道。<br><a id="more"></a><br>线程状态<br>    新建状态<br>    就绪状态<br>    运行状态<br>    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态<br>    死亡状态</p>
 <p>什么是CAS：compare and change<br>    有一个内存值V，一个期望值A，一个新值B，如果从内存中取出V值和A值相等，那么就把V值改为B值<br>    举个例子，比如有一个变量i初始值是0，现在有两个线程同时想对i进行i++操作，假设A进程先获得CPU使用权，先对i进行i++操作，V(i)=0;A=0;所以V(i)=1;这时候B线程V(i)=0;A=1,所以B线程操作失败</p>
 <p>原子变量：<br>    底层实现是CAS，CPU内部已经执行原子的CAS操作，可以使用原子类来是使用CPU中的这些功能</p>
 <p>Volatile和Java内存模型：<br>    Volatile只保证可见性不能保证原子性，，由于java内存模型是由堆和线程栈组成的，在处理数据时，线程会把值从堆中load到本地，处理完后再save回去，针对volatile修饰的变量的操作就是每次处理都激发一次load/save</p>
