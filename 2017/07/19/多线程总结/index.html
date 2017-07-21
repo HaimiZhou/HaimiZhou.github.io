@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="今天来说一下JVM的内存结构，为什么要讲这个，大家都知道，现在流行的框架越来越多，封装的也越来越完善，以至于我们基本不用关注底层的具体实现就可以快速上手，但是当程序出现问题时我们可能会难以解决，造成一定的局限性，所以我们只有知道这些基础知识底层原理，才能在出现问题时快速定位到问题的本质。Yes">
+<meta name="description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。 线程状态    新建状态    就绪状态    运行状态    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态    死亡状态 什么是CAS：compare and change    有一个内存值V，一个期望值A，一个新值">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM内存结构">
-<meta property="og:url" content="http://HaimiZhou.com/2017/07/15/JVM内存结构/index.html">
+<meta property="og:title" content="多线程总结">
+<meta property="og:url" content="http://HaimiZhou.com/2017/07/19/多线程总结/index.html">
 <meta property="og:site_name" content="黑米粥">
-<meta property="og:description" content="今天来说一下JVM的内存结构，为什么要讲这个，大家都知道，现在流行的框架越来越多，封装的也越来越完善，以至于我们基本不用关注底层的具体实现就可以快速上手，但是当程序出现问题时我们可能会难以解决，造成一定的局限性，所以我们只有知道这些基础知识底层原理，才能在出现问题时快速定位到问题的本质。Yes">
-<meta property="og:updated_time" content="2017-07-21T02:07:06.128Z">
+<meta property="og:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。 线程状态    新建状态    就绪状态    运行状态    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态    死亡状态 什么是CAS：compare and change    有一个内存值V，一个期望值A，一个新值">
+<meta property="og:updated_time" content="2017-07-21T06:27:12.049Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM内存结构">
-<meta name="twitter:description" content="今天来说一下JVM的内存结构，为什么要讲这个，大家都知道，现在流行的框架越来越多，封装的也越来越完善，以至于我们基本不用关注底层的具体实现就可以快速上手，但是当程序出现问题时我们可能会难以解决，造成一定的局限性，所以我们只有知道这些基础知识底层原理，才能在出现问题时快速定位到问题的本质。Yes">
+<meta name="twitter:title" content="多线程总结">
+<meta name="twitter:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。 线程状态    新建状态    就绪状态    运行状态    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态    死亡状态 什么是CAS：compare and change    有一个内存值V，一个期望值A，一个新值">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://HaimiZhou.com/2017/07/15/JVM内存结构/"/>
+  <link rel="canonical" href="http://HaimiZhou.com/2017/07/19/多线程总结/"/>
 
 
 
 
 
-  <title>JVM内存结构 | 黑米粥</title>
+  <title>多线程总结 | 黑米粥</title>
   
 
 
@@ -265,7 +265,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/15/JVM内存结构/">
+    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/19/多线程总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaimiZhou">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JVM内存结构</h1>
+          <h1 class="post-title" itemprop="name headline">多线程总结</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-15T12:48:37+08:00">
-                2017-07-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-19T17:24:14+08:00">
+                2017-07-19
               </time>
             
 
@@ -329,12 +329,17 @@
       
 
       
-        <p>今天来说一下JVM的内存结构，为什么要讲这个，大家都知道，现在流行的框架越来越多，封装的也越来越完善，以至于我们基本不用关注底层的具体实现就可以快速上手，但是当程序出现问题时我们可能会难以解决，造成一定的局限性，所以我们只有知道这些基础知识底层原理，才能在出现问题时快速定位到问题的本质。Yes<br><a id="more"></a><br>JVM内存结构<br>Java堆Heap: java堆是jvm所管理的内存中最大的一块，是被所有线程共享的，它里面存放的是对象实例，几乎所有的对象实例都在里面</p>
-<p>方法区：也是被所有线程共享的，里面存储已经被虚拟机加载的类信息，常量，静态变量，即时编译器编译后的代码等</p>
-<p>程序计数器：是一块较小的内存空间，是当前线程所执行字节码的行号指示器</p>
-<p>JVM栈：他和程序计数器一样也是线程私有的，生命周期和线程一样。他描述Java方法执行的内存模型：每个Java方法执行的时候就会创建一个栈帧用于存储局部变量表，操作栈，动态链接，方法出口等，一个方法从调用到执行完成的过程就对应一个栈帧在jvm栈中入栈到出栈的过程</p>
-<p>本地方法栈：同上，只不过本地方法栈是为jvm使用到的native方法服务</p>
-<p>对象分配规则<br>1.对象优先分配在Eden区，如果Eden空间不够则Minor GC<br>2.大对象直接进入老年代（需要大量连续内存空间的对象）避免在Eden区和Survivor区之间发生大量的内存拷贝（因为新生代采用复制算法收集内存）<br>3.长期存活的对象进入老年代。虚拟机为每一个对象定义了一个年龄计数器，第一次Minor GC 对象进入Survivor中，之后每Minor GC一次对象年龄加1，达到阈值对象进入老年区<br>4.动态判断对象的年龄：如果Survivor区中相同年龄的所有对象的大小总和大于Survivor空间的一半，则年龄大于或等于该年龄的对象进入老年代<br>5.空间分配担保：每次进行Minor GC时，JVM会计算Survivor区到老年代的对象的平均大小，如果这个值大于老年区的剩余值的大小，则进行Full GC ,如果小于检查HandlePromotionFailure设置，如果true则Minor GC，false Full GC</p>
+        <p>哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。<br>创建线程的方式就不用多说了相信大家都知道。</p>
+<p>线程状态<br>    新建状态<br>    就绪状态<br>    运行状态<br>    阻塞状态：正在运行的线程如果执行了suspend，join，sleep,或等待IO使用权，那么它将让出CPU进入阻塞状态<br>    死亡状态</p>
+<p>什么是CAS：compare and change<br>    有一个内存值V，一个期望值A，一个新值B，如果从内存中取出V值和A值相等，那么就把V值改为B值<br>    举个例子，比如有一个变量i初始值是0，现在有两个线程同时想对i进行i++操作，假设A进程先获得CPU使用权，先对i进行i++操作，V(i)=0;A=0;所以V(i)=1;这时候B线程V(i)=0;A=1,所以B线程操作失败</p>
+<p>原子变量：<br>    底层实现是CAS，CPU内部已经执行原子的CAS操作，可以使用原子类来是使用CPU中的这些功能</p>
+<p>Volatile和Java内存模型：<br>    Volatile只保证可见性不能保证原子性，，由于java内存模型是由堆和线程栈组成的，在处理数据时，线程会把值从堆中load到本地，处理完后再save回去，针对volatile修饰的变量的操作就是每次处理都激发一次load/save</p>
+<p>Synchronized：<br>    修饰代码块<br>        synchronized(this|object)<br>        synchronized(类.class)<br>    修饰方法<br>        修饰非静态方法<br>        修饰静态方法</p>
+<pre><code>synchronized关键字不能继承。
+在定义接口方法时不能使用synchronized关键字。
+构造方法不能使用synchronized关键字，但可以使用synchronized代码块来进行同步。
+</code></pre><p>Lock<br>    注意虚假唤醒：线程没有收到notify()就醒过来了<br>    可重入锁：如果一个线程进入同步控制块或同步方法里并获取了该同步块的对象的锁，那么这个线程可进入任何由该对象所同步其他代码块<br>    自旋锁：while循环</p>
+<p>生产者与消费者问题</p>
 
       
     </div>
@@ -371,8 +376,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/14/类的加载机制/" rel="next" title="类的加载机制">
-                <i class="fa fa-chevron-left"></i> 类的加载机制
+              <a href="/2017/07/16/GC分析-命令调优/" rel="next" title="GC分析 命令调优">
+                <i class="fa fa-chevron-left"></i> GC分析 命令调优
               </a>
             
           </div>
@@ -380,10 +385,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/16/GC算法-垃圾回收/" rel="prev" title="GC算法 垃圾回收">
-                GC算法 垃圾回收 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
