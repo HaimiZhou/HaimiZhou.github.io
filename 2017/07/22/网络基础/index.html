@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程) 三次握手 四次挥手 http协议">
+<meta name="description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层 三次握手">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络基础">
 <meta property="og:url" content="http://HaimiZhou.com/2017/07/22/网络基础/index.html">
 <meta property="og:site_name" content="黑米粥">
-<meta property="og:description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程) 三次握手 四次挥手 http协议">
-<meta property="og:updated_time" content="2017-07-22T08:42:45.588Z">
+<meta property="og:description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层 三次握手">
+<meta property="og:updated_time" content="2017-07-25T07:06:28.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络基础">
-<meta name="twitter:description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程) 三次握手 四次挥手 http协议">
+<meta name="twitter:description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层 三次握手">
 
 
 
@@ -202,7 +202,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -212,7 +212,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -222,7 +222,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -292,7 +292,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-22T16:07:02+08:00">
                 2017-07-22
@@ -330,10 +330,15 @@
 
       
         <p>下面先说一下我认为比较重要的几个问题：</p>
-<p>从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)</p>
+<p>从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)<br>    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层</p>
 <p>三次握手</p>
 <p>四次挥手</p>
 <p>http协议</p>
+<p>ARP协议<br>    地址解析协议<br>    当源主机要发送数据时，首先去看一下ARP表里头看一下有没有目标ip对应的mac地址，如果有则直接发数据<br>    如果没有，发ARP 请求包，这个包里头目标MAC为广播mac,但是只有与请求包中目标ip一致的主机才会响应，将源IP和源mac写到ARP表中，然后发送ARP应答包，源主机将目标IP和目标MAC更新他的ARP表，如果源主机一直没有收到应答包的话则说明此次ARP查询失败</p>
+<p>RARP协议<br>    逆地址解析协议<br>    主要用于无盘工作站，完成硬件地址到IP地址的映射，因为无盘工作站配置的ip不能保存，在网络中配置一个RARP服务器，里面保存ip地址和对应的mac地址，无盘工作站启动时，广播一个装有mac地址的RARP数据包，然后服务器收到后，查到对应的ip地址装入响应报文中发回给请求者，因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
+<pre><code>注：无盘工作站的原理就是在网内有一个系统服务器，这台系统服务器上除了有它本身运行所需的操作系统外还需要有一个工作站运行所需的操作系统，简单点一句话就是，无盘工作站其实就是把硬盘和主机分离，无盘工作站只执行操作不执行存储。故不会改变文件
+</code></pre><p>DHCP协议</p>
+<p>TCP、UDP区别<br>    UDP是面向无连接的，不可靠的数据报服务；<br>    TCP是面向连接的，可靠的字节流服务。</p>
 
       
     </div>
@@ -443,7 +448,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -497,7 +502,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
