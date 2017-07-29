@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层">
+<meta name="description" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络基础">
-<meta property="og:url" content="http://HaimiZhou.com/2017/07/22/网络基础/index.html">
+<meta property="og:title" content="MySQL性能优化和知识总结">
+<meta property="og:url" content="http://HaimiZhou.com/2017/07/29/MySQL性能优化和知识总结/index.html">
 <meta property="og:site_name" content="黑米粥">
-<meta property="og:description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层">
-<meta property="og:updated_time" content="2017-07-25T14:14:59.468Z">
+<meta property="og:description" content="JAVA">
+<meta property="og:updated_time" content="2017-07-29T07:50:24.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络基础">
-<meta name="twitter:description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层">
+<meta name="twitter:title" content="MySQL性能优化和知识总结">
+<meta name="twitter:description" content="JAVA">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://HaimiZhou.com/2017/07/22/网络基础/"/>
+  <link rel="canonical" href="http://HaimiZhou.com/2017/07/29/MySQL性能优化和知识总结/"/>
 
 
 
 
 
-  <title>网络基础 | 黑米粥</title>
+  <title>MySQL性能优化和知识总结 | 黑米粥</title>
   
 
 
@@ -265,7 +265,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/22/网络基础/">
+    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/29/MySQL性能优化和知识总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaimiZhou">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">网络基础</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL性能优化和知识总结</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-22T16:07:02+08:00">
-                2017-07-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-29T15:50:24+08:00">
+                2017-07-29
               </time>
             
 
@@ -334,32 +334,7 @@
       
 
       
-        <p>下面先说一下我认为比较重要的几个问题：</p>
-<p>从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)<br>    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层<br>    <a id="more"></a><br>    解释从DNS到三次握手到路由选择到ARP</p>
-<p>DNS解析过程<br>    比如客户机输入www.baidu.com,这时候客户机会向本地的DNS域名服务器的数据库里查询这个域名所对应的ip是什么，如果没有对应的这样一条数据，则递归的 玩下找，看有没有.baidu.com ,有没有.com所对应的ip</p>
-<pre><code>如果都没有，则本地域名服务器向根域名服务器查询，根域名服务器会返回.com的对应ip给本地域名服务器,本地域名服务器保存
-本地域名服务器向.com域名服务器继续查询域名，返回.baidu.com的ip给本地域名服务器，本地保存
-本地域名服务器向.baidu.com域名服务器查询域名，返回www.baidu.com的ip给本地，并保存
-</code></pre><p>三次握手<br>    第一次握手：主机A发送syn=1,产生seqn=x给B<br>    第二次握手：主机B收到数据包后知道A想和他联机，于是发送ack=1,ackn=x+1,syn=1,产生seqn=y的数据包给A，意思是告诉A，我已经收到你请求联机的信息啦，我们联机吧<br>    第三次握手：主机A发送ack=1,ackn=y+1,seqn=x+1给B，B一看信息都挺正确，于是AB开始建立联机，开始发送数据</p>
-<p>注：至于两次握手为什么不可以，就不详细说了，应该都知道吧</p>
-<p>四次挥手<br>    由于TCP是全双工的，每个方向都必须单独关闭<br>    第一次分手：客户端发FIN服务器，表示自己已经没有数据想要发给服务器了<br>    第二次分手：服务器收到FIN后还是可以发数据给客户端，客户端也可以接收，这时候服务器发回一个ack<br>    第三次分手：服务器也发一个FIN给客户端，表示自己也要关闭<br>    第四次分手：客户端发ACK给服务器，分手结束</p>
-<p>注 ：为什么建立连接协议是三次握手，而关闭连接却是四次握手呢？<br>    这是因为服务端的LISTEN状态下的SOCKET当收到SYN报文的建连请求后，它可以把ACK和SYN放在一个报文里来发送。而它这里的ACK报文和FIN报文多数情况下都是分开发送的。</p>
-<p>http协议<br>    是一个基于响应式的，无状态的，应用层的协议，常基于TCP链接<br>    HTTP请求分为请求行，消息报头，请求正文<br>        请求行：Method  Request-URI  HTTP-Version  CRLF<br>    HTTP响应：状态行，消息报头，响应正文<br>        状态行：HTTP-Version Status-Code Reason-Phrase (CRLF)</p>
-<pre><code>状态码    状态码含义
-1XX    指示信息–表示请求已接收，继续处理
-2XX    成功–表示请求已被成功接收、理解、接受
-3XX    重定向–要完成请求必须进行更进一步的操作
-4XX    客户端错误–请求有语法错误或请求无法实现
-5XX    服务器端错误–服务器未能实现合法的请求
-
-    消息报头：普通报头，实体报头，请求报头，响应报头
-</code></pre><p>路由选择协议<br>    距离矢量：通过路由器向其邻居发送自己的路由表的方式来维护自己本身的路由信息。<br>    链路状态; 收集整个网络的各种信息，所以，这些信息就构成了路由器的一个拓扑数据库。通过对这个数据库使用Dijkstra算法创建SPF树，这样就能找到通往目的地的最佳路径。</p>
-<p>ARP协议<br>    地址解析协议<br>    当源主机要发送数据时，首先去看一下ARP表里头看一下有没有目标ip对应的mac地址，如果有则直接发数据<br>    如果没有，发ARP 请求包，这个包里头目标MAC为广播mac,但是只有与请求包中目标ip一致的主机才会响应，将源IP和源mac写到ARP表中，然后发送ARP应答包，源主机将目标IP和目标MAC更新他的ARP表，如果源主机一直没有收到应答包的话则说明此次ARP查询失败</p>
-<p>RARP协议<br>    逆地址解析协议<br>    主要用于无盘工作站，完成硬件地址到IP地址的映射，因为无盘工作站配置的ip不能保存，在网络中配置一个RARP服务器，里面保存ip地址和对应的mac地址，无盘工作站启动时，广播一个装有mac地址的RARP数据包，然后服务器收到后，查到对应的ip地址装入响应报文中发回给请求者，因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
-<pre><code>注：无盘工作站的原理就是在网内有一个系统服务器，这台系统服务器上除了有它本身运行所需的操作系统外还需要有一个工作站运行所需的操作系统，简单点一句话就是，无盘工作站其实就是把硬盘和主机分离，无盘工作站只执行操作不执行存储。故不会改变文件
-</code></pre><p>DHCP协议<br>    客户机发送DHCP服务器查找包，如果没有等到应答包则此次分配失败，客户机收到应答包后向DHCP服务器发送请求分配包，DHCP服务器取一个待分配的IP地址，经过ICMP查询这个ip没有人使用的情况下，将这个ip给客户机，客户机收到后发ARP请求发现这个ip没有人使用，客户机就可以得到这个ip了</p>
-<p>TCP、UDP区别<br>    UDP是面向无连接的，不可靠的数据报服务；<br>    TCP是面向连接的，可靠的字节流服务。</p>
-
+        
       
     </div>
 
@@ -395,8 +370,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/22/NIO学习/" rel="next" title="NIO学习">
-                <i class="fa fa-chevron-left"></i> NIO学习
+              <a href="/2017/07/28/浏览器缓存与性能优化/" rel="next" title="浏览器缓存与性能优化">
+                <i class="fa fa-chevron-left"></i> 浏览器缓存与性能优化
               </a>
             
           </div>
@@ -404,10 +379,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/28/浏览器缓存与性能优化/" rel="prev" title="浏览器缓存与性能优化">
-                浏览器缓存与性能优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
