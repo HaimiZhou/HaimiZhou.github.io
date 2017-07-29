@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://HaimiZhou.com/2017/07/19/多线程总结/index.html">
 <meta property="og:site_name" content="黑米粥">
 <meta property="og:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。">
-<meta property="og:updated_time" content="2017-07-21T06:33:03.845Z">
+<meta property="og:updated_time" content="2017-07-29T10:21:59.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程总结">
 <meta name="twitter:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。">
@@ -202,7 +202,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -212,7 +212,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -222,7 +222,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            About
           </a>
         </li>
       
@@ -292,7 +292,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-19T17:24:14+08:00">
                 2017-07-19
@@ -343,6 +343,7 @@
 在定义接口方法时不能使用synchronized关键字。
 构造方法不能使用synchronized关键字，但可以使用synchronized代码块来进行同步。
 </code></pre><p>Lock<br>    注意虚假唤醒：线程没有收到notify()就醒过来了<br>    可重入锁：如果一个线程进入同步控制块或同步方法里并获取了该同步块的对象的锁，那么这个线程可进入任何由该对象所同步其他代码块<br>    自旋锁：while循环</p>
+<p>Lock与Synchronized的区别<br>    1.假如AB两个线程都想获得锁，对于同步锁而言，他会一直等直到获得锁，<br>    而可重入锁他 在等一段足够长时间后会中断去干别的事<br>    2.sychronized是在JVM层面上的，在代码执行时出现异常，JVM会自动释放锁<br>    lock必须使用unLock()释放锁<br>    3.当竞争不是很激烈的时候，synchronized的性能优于可重入锁</p>
 <p>生产者与消费者问题</p>
 
       
@@ -457,7 +458,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/">
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -511,7 +512,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
