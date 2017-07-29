@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://HaimiZhou.com/2017/07/22/网络基础/index.html">
 <meta property="og:site_name" content="黑米粥">
 <meta property="og:description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层">
-<meta property="og:updated_time" content="2017-07-25T14:14:59.468Z">
+<meta property="og:updated_time" content="2017-07-29T14:58:03.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络基础">
 <meta name="twitter:description" content="下面先说一下我认为比较重要的几个问题： 从网络的层次讲在浏览器中输入www.baidu.com后执行的全过程(之后有在MVC模式下的全过程)    客户端浏览器通过DNS解析到www.baidu,com的ip地址为220.181.27.48，通过这个ip地址找到客户端到服务器的路径，然后客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包输入到网络层">
@@ -359,6 +359,7 @@
 <pre><code>注：无盘工作站的原理就是在网内有一个系统服务器，这台系统服务器上除了有它本身运行所需的操作系统外还需要有一个工作站运行所需的操作系统，简单点一句话就是，无盘工作站其实就是把硬盘和主机分离，无盘工作站只执行操作不执行存储。故不会改变文件
 </code></pre><p>DHCP协议<br>    客户机发送DHCP服务器查找包，如果没有等到应答包则此次分配失败，客户机收到应答包后向DHCP服务器发送请求分配包，DHCP服务器取一个待分配的IP地址，经过ICMP查询这个ip没有人使用的情况下，将这个ip给客户机，客户机收到后发ARP请求发现这个ip没有人使用，客户机就可以得到这个ip了</p>
 <p>TCP、UDP区别<br>    UDP是面向无连接的，不可靠的数据报服务；<br>    TCP是面向连接的，可靠的字节流服务。</p>
+<p>地址转换<br>    210.31.100.1/24 表示前24位是网络地址<br>    255.255.255.0 子网掩码  （网络地址全1，主机地址全0）<br>    210.31.100.255 广播地址 （网络地址不变，主机地址全1）<br>    210.31.100.0  网络地址  （网络地址不变，主机地址全0）</p>
 
       
     </div>
