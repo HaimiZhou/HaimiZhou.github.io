@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="GC日志分析调优命令调优工具 1.给Java虚拟机分配超大堆，前提是有把握把应用程序的Full GC频率控制的足够低2.分配超大堆时，如果用到NIO机制分配了很多Direct Memory，这可能导致内存溢出，这是可设置-XX：MaxDirectMemorySize调整大小3.可通过-XSS调整线程堆栈的大小">
+<meta name="description" content="GC日志分析调优命令调优工具 1.给Java虚拟机分配超大堆，前提是有把握把应用程序的Full GC频率控制的足够低2.分配超大堆时，如果用到NIO机制分配了很多Direct Memory，这可能导致内存溢出，这是可设置-XX：MaxDirectMemorySize调整大小3.可通过-XSS调整线程堆栈的大小 常见命令：-Xms:设置最小堆-Xmx:设置最大堆-Xss:jvm栈大小-XX:NewR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GC分析 命令调优">
 <meta property="og:url" content="http://HaimiZhou.com/2017/07/16/GC分析-命令调优/index.html">
 <meta property="og:site_name" content="黑米粥">
-<meta property="og:description" content="GC日志分析调优命令调优工具 1.给Java虚拟机分配超大堆，前提是有把握把应用程序的Full GC频率控制的足够低2.分配超大堆时，如果用到NIO机制分配了很多Direct Memory，这可能导致内存溢出，这是可设置-XX：MaxDirectMemorySize调整大小3.可通过-XSS调整线程堆栈的大小">
-<meta property="og:updated_time" content="2017-07-16T08:04:39.398Z">
+<meta property="og:description" content="GC日志分析调优命令调优工具 1.给Java虚拟机分配超大堆，前提是有把握把应用程序的Full GC频率控制的足够低2.分配超大堆时，如果用到NIO机制分配了很多Direct Memory，这可能导致内存溢出，这是可设置-XX：MaxDirectMemorySize调整大小3.可通过-XSS调整线程堆栈的大小 常见命令：-Xms:设置最小堆-Xmx:设置最大堆-Xss:jvm栈大小-XX:NewR">
+<meta property="og:updated_time" content="2017-08-17T05:08:17.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GC分析 命令调优">
-<meta name="twitter:description" content="GC日志分析调优命令调优工具 1.给Java虚拟机分配超大堆，前提是有把握把应用程序的Full GC频率控制的足够低2.分配超大堆时，如果用到NIO机制分配了很多Direct Memory，这可能导致内存溢出，这是可设置-XX：MaxDirectMemorySize调整大小3.可通过-XSS调整线程堆栈的大小">
+<meta name="twitter:description" content="GC日志分析调优命令调优工具 1.给Java虚拟机分配超大堆，前提是有把握把应用程序的Full GC频率控制的足够低2.分配超大堆时，如果用到NIO机制分配了很多Direct Memory，这可能导致内存溢出，这是可设置-XX：MaxDirectMemorySize调整大小3.可通过-XSS调整线程堆栈的大小 常见命令：-Xms:设置最小堆-Xmx:设置最大堆-Xss:jvm栈大小-XX:NewR">
 
 
 
@@ -116,7 +116,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Penulis'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -202,7 +202,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Beranda
+            Startseite
           </a>
         </li>
       
@@ -212,7 +212,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategori
+            Kategorien
           </a>
         </li>
       
@@ -222,7 +222,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Tentang
+            Über
           </a>
         </li>
       
@@ -292,7 +292,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-16T11:32:37+08:00">
                 2017-07-16
@@ -336,6 +336,7 @@
       
         <p>GC日志分析<br>调优命令<br>调优工具</p>
 <p>1.给Java虚拟机分配超大堆，前提是有把握把应用程序的Full GC频率控制的足够低<br>2.分配超大堆时，如果用到NIO机制分配了很多Direct Memory，这可能导致内存溢出，这是可设置-XX：MaxDirectMemorySize调整大小<br>3.可通过-XSS调整线程堆栈的大小</p>
+<p>常见命令：<br>-Xms:设置最小堆<br>-Xmx:设置最大堆<br>-Xss:jvm栈大小<br>-XX:NewRario=4  年轻代和老年代的比值1:4<br>-XX:SurvivorRatio=8   设置2个Survivor区：1个Eden区的大小比值为2:8<br>-Xmn 年轻代大小</p>
 
       
     </div>
@@ -449,7 +450,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/">
                 <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">posting</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -503,11 +504,11 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Tema -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

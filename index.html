@@ -115,7 +115,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Penulis'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -203,7 +203,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Beranda
+            Startseite
           </a>
         </li>
       
@@ -213,7 +213,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategori
+            Kategorien
           </a>
         </li>
       
@@ -223,7 +223,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Tentang
+            Über
           </a>
         </li>
       
@@ -295,7 +295,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-10T11:20:46+08:00">
                 2017-08-10
@@ -338,7 +338,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/10/servlet-struts2-springmvc一次请求全过程/#more" rel="contents">
-              Baca lebih &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -412,7 +412,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-29T15:50:24+08:00">
                 2017-07-29
@@ -455,7 +455,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/29/MySQL性能优化和知识总结/#more" rel="contents">
-              Baca lebih &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -529,7 +529,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-28T10:33:07+08:00">
                 2017-07-28
@@ -572,7 +572,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/28/浏览器缓存与性能优化/#more" rel="contents">
-              Baca lebih &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -646,7 +646,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-22T16:07:02+08:00">
                 2017-07-22
@@ -689,7 +689,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/22/网络基础/#more" rel="contents">
-              Baca lebih &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -763,7 +763,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-22T16:04:23+08:00">
                 2017-07-22
@@ -877,7 +877,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-19T17:24:14+08:00">
                 2017-07-19
@@ -919,7 +919,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/19/多线程总结/#more" rel="contents">
-              Baca lebih &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -993,7 +993,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-16T11:32:37+08:00">
                 2017-07-16
@@ -1034,6 +1034,7 @@
           
             <p>GC日志分析<br>调优命令<br>调优工具</p>
 <p>1.给Java虚拟机分配超大堆，前提是有把握把应用程序的Full GC频率控制的足够低<br>2.分配超大堆时，如果用到NIO机制分配了很多Direct Memory，这可能导致内存溢出，这是可设置-XX：MaxDirectMemorySize调整大小<br>3.可通过-XSS调整线程堆栈的大小</p>
+<p>常见命令：<br>-Xms:设置最小堆<br>-Xmx:设置最大堆<br>-Xss:jvm栈大小<br>-XX:NewRario=4  年轻代和老年代的比值1:4<br>-XX:SurvivorRatio=8   设置2个Survivor区：1个Eden区的大小比值为2:8<br>-Xmn 年轻代大小</p>
 
           
         
@@ -1106,7 +1107,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-16T09:08:19+08:00">
                 2017-07-16
@@ -1148,7 +1149,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/16/GC算法-垃圾回收/#more" rel="contents">
-              Baca lebih &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1222,7 +1223,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-15T12:48:37+08:00">
                 2017-07-15
@@ -1264,7 +1265,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/15/JVM内存结构/#more" rel="contents">
-              Baca lebih &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1338,7 +1339,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-14T10:59:48+08:00">
                 2017-07-14
@@ -1381,7 +1382,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/14/类的加载机制/#more" rel="contents">
-              Baca lebih &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1464,7 +1465,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/">
                 <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">posting</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -1518,11 +1519,11 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Tema -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
