@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://HaimiZhou.com/2017/08/29/MySQL存储引擎/index.html">
 <meta property="og:site_name" content="黑米粥">
 <meta property="og:description" content="存储引擎是一种将数据以不同的技术存储在文件中。1.InnoDB(MySQL默认存储引擎) 特点：    1.支持事物和自动崩溃修复    2.数据存储在表空间中    3.通过MVCC支持高并发，有四个标准隔离级别(默认是可重复读级别，并通过间隙锁防止幻读)    4.基于聚簇索引(主键尽可能小，因为辅助索引的data域是主键值)    5.支持自适应哈希索引，插入缓冲区，支持热备份">
-<meta property="og:updated_time" content="2017-08-29T08:08:37.021Z">
+<meta property="og:updated_time" content="2017-08-29T11:12:43.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL存储引擎">
 <meta name="twitter:description" content="存储引擎是一种将数据以不同的技术存储在文件中。1.InnoDB(MySQL默认存储引擎) 特点：    1.支持事物和自动崩溃修复    2.数据存储在表空间中    3.通过MVCC支持高并发，有四个标准隔离级别(默认是可重复读级别，并通过间隙锁防止幻读)    4.基于聚簇索引(主键尽可能小，因为辅助索引的data域是主键值)    5.支持自适应哈希索引，插入缓冲区，支持热备份">
@@ -338,7 +338,9 @@
 <p>特点：<br>    1.支持事物和自动崩溃修复<br>    2.数据存储在表空间中<br>    3.通过MVCC支持高并发，有四个标准隔离级别(默认是可重复读级别，并通过间隙锁防止幻读)<br>    4.基于聚簇索引(主键尽可能小，因为辅助索引的data域是主键值)<br>    5.支持自适应哈希索引，插入缓冲区，支持热备份<br><a id="more"></a><br>    ps:MVCC(多版本并发控制)：通过一定机制生成数据请求点的一致性数据快照</p>
 <pre><code>MYSQL主从复制：
     主节点将记录的改变存到一个二进制文件中，从节点服务器有一个IO线程一直监视这个二进制日志文件，如果发现文件有更新，则把这个文件
-    读入从节点的中继日志文件中，从节点还有一个SQL线程从中继日志读取事件并重新操作这些事件将数据保持与主节点一致。
+    读入从节点的中继日志文件中，从节点还有一个SQL线程从中继日志读取事件并重新操作这些事件将数据保持与主节点一致。：
+
+自适应哈希索引：当InnoDB注意到某些索引值被使用的非常频繁时，会基于B-tree索引之上再创建一个哈希索引。
 </code></pre><p>2.MyISAM（最主要的性能问题还是表锁，如果所有查询长期处于“Locked”状态，则就是表锁导致的）</p>
 <p>特点:<br>1.不支持事物，崩溃后无法安全修复，不支持行锁<br>2.表存储在两个文件中：数据文件和索引文件<br>3.支持并发插入，在表读取的时候可以插入新的记录<br>4.支持全文索引，支持压缩表减少空间占用减少磁盘IO<br>5.延迟更新索引键：更新索引时不会立即写入磁盘而是写入内存中的键缓冲区中，但是在数据库或主机奔溃时可能会造成主键损坏</p>
 
@@ -386,6 +388,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/29/高性能的索引策略/" rel="prev" title="高性能的索引策略">
+                高性能的索引策略 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -449,7 +455,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

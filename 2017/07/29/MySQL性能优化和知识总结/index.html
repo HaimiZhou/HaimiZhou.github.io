@@ -95,13 +95,13 @@
 
 <meta name="description" content="1.选取最适当的字段属性。    例如，在定义邮政编码这个字段时，如果将其设置为CHAR(255),显然给数据库增加了不必要的空间，甚至使用VARCHAR这种类型也是多余的，因为CHAR(6）就可以很好的完成任务了。同样的，如果可以的话，我们应该使用MEDIUMINT而不是BIGIN来定义整型字段。 2.尽量把字段设置为NOT NULL，这样在将来执行查询的时候数据库不用去 比较NULL值。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL性能优化和知识总结">
+<meta property="og:title" content="MySQL查询性能优化">
 <meta property="og:url" content="http://HaimiZhou.com/2017/07/29/MySQL性能优化和知识总结/index.html">
 <meta property="og:site_name" content="黑米粥">
 <meta property="og:description" content="1.选取最适当的字段属性。    例如，在定义邮政编码这个字段时，如果将其设置为CHAR(255),显然给数据库增加了不必要的空间，甚至使用VARCHAR这种类型也是多余的，因为CHAR(6）就可以很好的完成任务了。同样的，如果可以的话，我们应该使用MEDIUMINT而不是BIGIN来定义整型字段。 2.尽量把字段设置为NOT NULL，这样在将来执行查询的时候数据库不用去 比较NULL值。">
-<meta property="og:updated_time" content="2017-07-29T11:03:50.612Z">
+<meta property="og:updated_time" content="2017-08-29T12:35:58.866Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL性能优化和知识总结">
+<meta name="twitter:title" content="MySQL查询性能优化">
 <meta name="twitter:description" content="1.选取最适当的字段属性。    例如，在定义邮政编码这个字段时，如果将其设置为CHAR(255),显然给数据库增加了不必要的空间，甚至使用VARCHAR这种类型也是多余的，因为CHAR(6）就可以很好的完成任务了。同样的，如果可以的话，我们应该使用MEDIUMINT而不是BIGIN来定义整型字段。 2.尽量把字段设置为NOT NULL，这样在将来执行查询的时候数据库不用去 比较NULL值。">
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <title>MySQL性能优化和知识总结 | 黑米粥</title>
+  <title>MySQL查询性能优化 | 黑米粥</title>
   
 
 
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL性能优化和知识总结</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL查询性能优化</h1>
         
 
         <div class="post-meta">
@@ -382,8 +382,8 @@ SELECT  *  FROM  books  WHERE  name  like   &quot;MySQL%&quot;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/28/浏览器缓存与性能优化/" rel="next" title="浏览器缓存与性能优化">
-                <i class="fa fa-chevron-left"></i> 浏览器缓存与性能优化
+              <a href="/2017/07/29/MySQL查询性能优化/" rel="next" title="MySQL查询性能优化">
+                <i class="fa fa-chevron-left"></i> MySQL查询性能优化
               </a>
             
           </div>
@@ -458,7 +458,7 @@ SELECT  *  FROM  books  WHERE  name  like   &quot;MySQL%&quot;
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
