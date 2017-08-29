@@ -93,16 +93,15 @@
 
 
 
-<meta name="description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="多线程总结">
-<meta property="og:url" content="http://HaimiZhou.com/2017/07/19/多线程总结/index.html">
+<meta name="description" content="JAVA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="黑米粥">
+<meta property="og:url" content="http://HaimiZhou.com/page/2/index.html">
 <meta property="og:site_name" content="黑米粥">
-<meta property="og:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。">
-<meta property="og:updated_time" content="2017-08-17T05:22:10.679Z">
+<meta property="og:description" content="JAVA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多线程总结">
-<meta name="twitter:description" content="哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。创建线程的方式就不用多说了相信大家都知道。">
+<meta name="twitter:title" content="黑米粥">
+<meta name="twitter:description" content="JAVA">
 
 
 
@@ -130,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://HaimiZhou.com/2017/07/19/多线程总结/"/>
+  <link rel="canonical" href="http://HaimiZhou.com/page/2/"/>
 
 
 
 
 
-  <title>多线程总结 | 黑米粥</title>
+  <title>黑米粥</title>
   
 
 
@@ -161,7 +160,9 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,9 +255,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -265,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/19/多线程总结/">
+    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/14/类的加载机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaimiZhou">
@@ -282,7 +283,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">多线程总结</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/14/类的加载机制/" itemprop="url">类的加载机制</a></h1>
         
 
         <div class="post-meta">
@@ -294,8 +297,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-19T17:24:14+08:00">
-                2017-07-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-14T10:59:48+08:00">
+                2017-07-14
               </time>
             
 
@@ -314,11 +317,6 @@
           
 
           
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-            </span>
-          
 
           
 
@@ -334,39 +332,29 @@
       
 
       
-        <p>哎，看了三天的多线程，今天晚上来总结一下所学的一些知识吧。<br>创建线程的方式就不用多说了相信大家都知道。<br><a id="more"></a><br>线程状态<br>    新建状态<br>    就绪状态<br>    运行状态<br>    阻塞状态：<br>        等待阻塞：wait<br>        同步阻塞:等待锁<br>        其他阻塞：sleep join io<br>    死亡状态</p>
-<p>什么是CAS：compare and change<br>    有一个内存值V，一个期望值A，一个新值B，如果从内存中取出V值和A值相等，那么就把V值改为B值<br>    举个例子，比如有一个变量i初始值是0，现在有两个线程同时想对i进行i++操作，假设A进程先获得CPU使用权，先对i进行i++操作，V(i)=0;A=0;所以V(i)=1;这时候B线程V(i)=0;A=1,所以B线程操作失败</p>
-<p>原子变量：<br>    底层实现是CAS，CPU内部已经执行原子的CAS操作，可以使用原子类来是使用CPU中的这些功能</p>
-<p>Volatile和Java内存模型：<br>    Volatile只保证可见性不能保证原子性，，由于java内存模型是由堆和线程栈组成的，在处理数据时，线程会把值从堆中load到本地，处理完后再save回去，针对volatile修饰的变量的操作就是每次处理都激发一次load/save</p>
-<p>Synchronized：<br>    修饰代码块<br>        synchronized(this|object)<br>        synchronized(类.class)<br>    修饰方法<br>        修饰非静态方法<br>        修饰静态方法</p>
-<pre><code>synchronized关键字不能继承。
-在定义接口方法时不能使用synchronized关键字。
-构造方法不能使用synchronized关键字，但可以使用synchronized代码块来进行同步。
-</code></pre><p>Lock<br>    注意虚假唤醒：线程没有收到notify()就醒过来了<br>    可重入锁：如果一个线程进入同步控制块或同步方法里并获取了该同步块的对象的锁，那么这个线程可进入任何由该对象所同步其他代码块<br>    自旋锁：while循环</p>
-<p>Lock与Synchronized的区别<br>    1.假如AB两个线程都想获得锁，对于同步锁而言，他会一直等直到获得锁，<br>    而可重入锁他 在等一段足够长时间后会中断去干别的事<br>    2.sychronized是在JVM层面上的，在代码执行时出现异常，JVM会自动释放锁<br>    lock必须使用unLock()释放锁<br>    3.当竞争不是很激烈的时候，synchronized的性能优于可重入锁</p>
-<p>生产者与消费者问题</p>
-
+        
+          <p>第一次写博客，有点小激动，不知道发布上去会是什么样子呢~<br>今天我来讲一下一个类从加载到初始化是怎样的一个过程呢，让我慢慢道来。。</p>
+<p>首先我们编写的这样一个.java文件会通过JDK环境相关指令被编译成一个.class文件<br>然后.class文件会被JVM加载进内存，至于他是怎么被加载进来的呢，被谁加载进来的呢，这里就有个双亲委派模型机制，当前类加载器首先查询自己是否已经加载过这个类，如果已经加载的话直接返回，如果没有找到的话，委托父类加载器去去加载，父类采用统同样的策略，首先看自己这有没有，如果没有就委托父类的父类去加载，一直到bootstrapclassLoader.如果所有的父类加载器都没有加载的时候再由当前类加载器加载。这样就避免了一个类被加载多次。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/14/类的加载机制/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
@@ -374,42 +362,25 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/07/16/GC分析-命令调优/" rel="next" title="GC分析 命令调优">
-                <i class="fa fa-chevron-left"></i> GC分析 命令调优
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/22/NIO学习/" rel="prev" title="NIO学习">
-                NIO学习 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -417,10 +388,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -619,10 +586,10 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-
+  
 
   
 

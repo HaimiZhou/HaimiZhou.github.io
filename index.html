@@ -266,6 +266,127 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/08/29/MySQL存储引擎/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaimiZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑米粥">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/29/MySQL存储引擎/" itemprop="url">MySQL存储引擎</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-29T15:02:28+08:00">
+                2017-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>存储引擎是一种将数据以不同的技术存储在文件中。<br>1.InnoDB(MySQL默认存储引擎)</p>
+<p>特点：<br>    1.支持事物和自动崩溃修复<br>    2.数据存储在表空间中<br>    3.通过MVCC支持高并发，有四个标准隔离级别(默认是可重复读级别，并通过间隙锁防止幻读)<br>    4.基于聚簇索引(主键尽可能小，因为辅助索引的data域是主键值)<br>    5.支持自适应哈希索引，插入缓冲区，支持热备份</p>
+<pre><code>ps:MVCC(多版本并发控制)：通过一定机制生成数据请求点的一致性数据快照
+
+MYSQL主从复制：
+    主节点将记录的改变存到一个二进制文件中，从节点服务器有一个IO线程一直监视这个二进制日志文件，如果发现文件有更新，则把这个文件
+    读入从节点的中继日志文件中，从节点还有一个SQL线程从中继日志读取事件并重新操作这些事件将数据保持与主节点一致。
+</code></pre><p>2.MyISAM（最主要的性能问题还是表锁，如果所有查询长期处于“Locked”状态，则就是表锁导致的）</p>
+<p>特点:</p>
+<p>1.不支持事物，崩溃后无法安全修复，不支持行锁<br>2.表存储在两个文件中：数据文件和索引文件<br>3.支持并发插入，在表读取的时候可以插入新的记录<br>4.支持全文索引，支持压缩表减少空间占用减少磁盘IO<br>5.延迟更新索引键：更新索引时不会立即写入磁盘而是写入内存中的键缓冲区中，但是在数据库或主机奔溃时可能会造成主键损坏</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/08/10/servlet-struts2-springmvc一次请求全过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1301,126 +1422,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://HaimiZhou.com/2017/07/14/类的加载机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HaimiZhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑米粥">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/14/类的加载机制/" itemprop="url">类的加载机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-14T10:59:48+08:00">
-                2017-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>第一次写博客，有点小激动，不知道发布上去会是什么样子呢~<br>今天我来讲一下一个类从加载到初始化是怎样的一个过程呢，让我慢慢道来。。</p>
-<p>首先我们编写的这样一个.java文件会通过JDK环境相关指令被编译成一个.class文件<br>然后.class文件会被JVM加载进内存，至于他是怎么被加载进来的呢，被谁加载进来的呢，这里就有个双亲委派模型机制，当前类加载器首先查询自己是否已经加载过这个类，如果已经加载的话直接返回，如果没有找到的话，委托父类加载器去去加载，父类采用统同样的策略，首先看自己这有没有，如果没有就委托父类的父类去加载，一直到bootstrapclassLoader.如果所有的父类加载器都没有加载的时候再由当前类加载器加载。这样就避免了一个类被加载多次。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/14/类的加载机制/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1464,7 +1472,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
